@@ -1,0 +1,432 @@
+﻿  <!DOCTYPE html>
+  <html><head><title>Devis de professionnel : métré</title></head>
+  
+  <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.12';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+    <style>
+  body{font-family:arial; background:#204; color:white;}
+  
+#titre,#wtodo{color:yellow;font-size:20px;}
+
+
+  #lettres{color:#ccccff; font-size:30px;}
+ .prix{background:white; opacity:.6 ;}
+ button{background-color:#000; color: #fff; border-radius:10px;}
+ button:hover{border-radius:60px; transition:1s;}
+ #bt{width:120px; height:50px; font-size:30px; position:relative;top:11px;left:0px;}
+
+  #aire {height:33px; width:200px;font-size:30px; text-align:center; opacity:.8;}
+  #etages {height:33px; width:200px;font-size:30px; text-align:center; opacity:.8;}
+   
+#details{color:black;font-size:15px; text-align:right;}
+
+#reset{text-decoration:none;color:pink;background-color:white;opacity:1;
+font-size:30px;}
+
+ #un{color:white;} .copie{color: #555;}
+ #champeuro{height:20px;} #champdollar{height:20px;}
+ 
+ /*=================*/
+ #Projet{color:yellow;}
+ #metre{left:20px;}
+ #lg{left:-150px; bottom:15px; position:relative; color:blue;}
+#ico{position:relative; opacity:.7;} #ico:hover{opacity:1;}
+.ico:hover{opacity:.8;} #icodevis{opacity:.4;}
+#PS0,#PS1,#PS2,#PS3,#PS4,#PS5,#PS6,#PS7,#PS8{position:relative; left:3000px;}
+#archi{position:relative; left:50px;}
+#titre{background:#000;}
+  </style>
+}
+<div id="titre">
+<table border="0" cellpadding="10">
+<td>
+<a href="http://www.archidessin.net" title="Site d'architecture" target="blank"><img src="webimages/A.jpg" height="50"></a>
+</td><td>
+ <b id="titre">DEVIS CALCULE AUTOMATIQUEMENT POUR VOUS</b>
+ <br><hr color="red">
+ </td></table>
+ </div>
+ <br><br>
+ <b id="wtodo">
+1- Mettre la surface et le nombre d'étages.<br>
+2- Appuyer sur &nbsp;<b style="color:#fff">PRIX</b>.<br>
+3- Lisez le prix et allez sur <br>&nbsp;&nbsp;&nbsp;
+      <b style="color:#0ef;">VOIR LES DETAILS</b>.<br>
+4- Lisez les détails et allez sur <br>&nbsp;&nbsp;&nbsp;
+      <b style="color:#0ef;">VOIR LES QUANTITES</b>.<br>
+</b><br><br>
+  <table border="2">
+<td>
+  <b>
+  Surface du terrain en m²<br>
+  <input id="aire" placeholder="Exemple : 200" value="">
+  <br><br>
+  Nombre d'étages <br>
+  </b> 
+  <input id="etages" placeholder="Exemple : 2" value="">
+  <br><br>
+  <button id="bt" onclick="verif(), transferteuro(), transfertdollar()">PRIX</button> 
+</td>
+<td>
+ <table border=".5" id="details">
+<td id="T1"></td> <td id="T2"></td><tr> <!--=====--> <td id="T3"></td> <td id="T4"></td><tr>
+<td id="T5"></td> <td id="T6"></td><tr> <!--=====--> <td id="T7"></td> <td id="T8"></td><tr>
+<td id="T9"></td> <td id="T10"></td><tr> <!--=====--> <td id="T11"></td> <td id="T12"></td><tr>
+<td id="T13"></td> <td id="T14"></td><tr> <!--=====--> <td id="T15"></td> <td id="T16"></td><tr>
+<!--
+<td id="T5"></td> <td id="T6"></td><tr>    <td id="T7"></td> <td id="T8"></td><tr>
+-->
+</table>
+</td>
+</table><br>
+   <br>
+<a href="Devis.html" id="reset" title="Effacer">&nbsp;X&nbsp;</a>
+
+  <br><br>
+
+  <span id="lettres" class="prix"></span><br><span id="bt2"></span> 
+   <br><br>
+
+  <i id="0" ></i><br>
+  <b id="un"></b><br>
+  <b id="2"></b>
+  <b id="3"></b>
+  <b id="4"></b>
+  <b id="5"></b><br>
+  <b id="six"></b><br> <!--Le CSS déconne avec un id numérique-->
+<br>
+
+  <span class="copie" id="aconvertir"></span><br>
+
+  <input id="champeuro">
+  		<font size="6" color="blue">€</font>
+  <button onclick="conveuro()">Convertir en E U R O</button>
+  <button onclick="verif(), transferteuro(), transfertdollar()">ANNULER</button>
+  <br><br>
+  <input id="champdollar">
+  		<font size="6" color="green">$</font>
+  <button onclick="convdollar()">Convertir en DOLLAR</button>
+  <br>
+  </div>
+  <br><br>
+ <!--============================================-->
+ 
+ 
+    <br>    <br><span id="bt3"></span>   <br><br>
+<a href="Devis.html" id="reset" title="Effacer">&nbsp;X&nbsp;</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+<span id="Projet"></span>
+<br><br>
+   <table title="Quantités de matériaux" id="metre" onclick="affmetre()">
+<td><span id="ico"><img src="webimages/ico_ciment.jpg" height="150"></span>
+<span id="lg">CIMENT</span></td>
+<td><span id="PS0"></span></td><tr>
+
+<td><span id="ico"><img src="webimages/ico_fer.jpg" height="150"></span>
+<span id="lg">FER</span></td>
+<td><span id="PS1"></span></td><tr>
+
+<td><span id="ico"><img src="webimages/ico_sable.jpg" height="150"></span>
+<span id="lg">SABLE</span></td>
+<td><span id="PS2"></span></td><tr>
+
+<td><span id="ico"><img src="webimages/ico_btnoir.jpg" height="150"></span>
+<span id="lg">BETON</span></td>
+<td><span id="PS3"></span></td><tr>
+
+<td><span id="ico"><img src="webimages/ico_briques.jpg" height="150"></span>
+<span id="lg">BRIQUES</span></td>
+<td><span id="PS4"></span></td><tr>
+
+<td><span id="ico"><img src="webimages/ico_hourdis.jpg" height="150"></span>
+<span id="lg">HOURDIS</span></td>
+<td><span id="PS5"></span></td><tr>
+
+<td><span id="ico"><img src="webimages/ico_briquesp.jpg" height="150"></span>
+<span id="lg">BRIQUES PL.</span></td>
+<td><span id="PS6"></span></td><tr>
+</table>
+  
+  
+  
+  
+<br><span id="PS7"></span><br><span id="PS8"></span>
+
+<br>  <br><br>  
+
+ <font color="#ffff00" height="30"><b>
+CONTACTEZ IFLAB ARCHIDESSIN
+</b></font>
+
+
+<br> <br>  
+<table>
+<td><img src="webimages/logo_whatsapp.jpg"class="ico" height="40">
+<td><span class="mess">+221764637664 (Messages texte uniquement)</span>
+<tr><td><td>archidessin@gmail.com
+</table><br><br>
+
+ 
+ 
+
+  
+<script>
+  // P R E V O I R   S-S  O  L
+  // O P T I O N : << Je ne sais pas, montrez-moi un exemple >>
+
+  		function verif(){
+document.getElementById("details").style="color:black;";
+  
+  s= document.getElementById("aire").value;
+  e= document.getElementById("etages").value;
+
+  if (s>=80 & s<=3000 & e>=0 & e<=40)  {
+document.getElementById("bt").style="top:33px;transition:3s";
+document.getElementById("un").style="color:#777;transition:20s";
+  devis();}
+  else 
+  {
+  document.getElementById("lettres","0","un","Montant").innerHTML=
+  "Entrez les bonnes infos svp";
+  document.getElementById("six").innerHTML=
+  "Projet non valable. Appuyez sur "+
+  '<a href="Devis.html" id="reset" title="Effacer">&nbsp;X&nbsp;</a>'+
+  " et recommencez.";
+;
+  document.getElementById("six").style="color:red";
+  }
+  						 }
+
+  function devis()		{ /*Contient resultats() et nbretages()*/
+  s= document.getElementById("aire").value;
+  e= document.getElementById("etages").value;
+  pourc= parseInt(s)*.75;
+  niv= parseInt(e)+1;
+  prix= niv*pourc*250000;
+  m6= (prix/1E6).toFixed(2)+" <i>millions &nbsp; &nbsp; &nbsp; </i>";
+  m9s= parseInt(prix/1E9)+" <i>milliards</i> et "+parseInt(prix%1E9/1E6)+" millions &nbsp; &nbsp; &nbsp;";
+  m9= parseInt(prix/1E9)+" <i>milliard</i> et "+parseInt(prix%1E9/1E6)+" millions &nbsp; &nbsp; &nbsp;";
+
+if(prix >= 1E6 & prix < 1E9)
+{
+document.getElementById("lettres").innerHTML=m6;
+document.getElementById("lettres").style="color:black;transition:2s";
+resultats();
+}
+
+else if(prix >= 1E9 & prix < 2E9)
+{
+document.getElementById("lettres").innerHTML=m9;
+document.getElementById("lettres").style="color:black;transition:2s";
+resultats();
+}
+
+else
+{
+document.getElementById("lettres").innerHTML=m9s;
+document.getElementById("lettres").style="color:black;transition:2s";
+resultats();
+}
+
+  //document.getElementById("2").innerHTML=m6;
+  //document.getElementById("3").innerHTML="";
+  //document.getElementById("4").innerHTML=m9;
+         
+ //Fonctions qui reviennent  =====================
+ 
+            function resultats()
+			{            
+            
+document.getElementById("0").innerHTML="Fcfa : "+parseInt(prix/1000)+" 000";
+document.getElementById("un").innerHTML="Surface construite = "+pourc+" m².";
+nbretages();
+document.getElementById("six").innerHTML="Terrain de "+s+" m².";
+document.getElementById("aconvertir").innerHTML=prix;
+
+			}
+
+
+function nbretages()
+{
+  if(e==0){		
+  document.getElementById("5").innerHTML="Rez-de-chaussée";
+  } 
+  else if(e==1){
+  document.getElementById("5").innerHTML=e+" Etage.";
+  }
+   else{
+  document.getElementById("5").innerHTML=e+" Etages.";
+  }
+
+ document.getElementById("bt2").innerHTML="<button onclick='tableau(), metre()' style='color:#0ef; width:200px; height:30px; font-size:20px; position:absolute;'>VOIR LES DETAILS</button>";
+
+
+}
+
+
+
+ 													 }/*Fin fonction Devis()*/
+  
+function tableau(){ 
+
+document.getElementById("bt").style="left:230px;transition:2s;"
+document.getElementById("details").style="color:white;transition:5s;"
+
+document.getElementById("T1").innerHTML="&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Installation chantier";				
+document.getElementById("T2").innerHTML="&nbsp; &nbsp; &nbsp;"+parseInt(prix/20/1000)+" 000";
+
+document.getElementById("T3").innerHTML="Gros-oeuvre";				
+document.getElementById("T4").innerHTML=parseInt(prix/1.96/1000)+" 000";	
+
+document.getElementById("T5").innerHTML="Electricité";				
+document.getElementById("T6").innerHTML=parseInt(prix/12.5/1000)+" 000";		
+
+document.getElementById("T7").innerHTML="Plomberie";				
+document.getElementById("T8").innerHTML=parseInt(prix/16.67/1000)+" 000";				
+
+document.getElementById("T9").innerHTML="Revêtements (carreaux + peinture)";				
+document.getElementById("T10").innerHTML=parseInt(prix/8.33/1000)+" 000";
+
+document.getElementById("T11").innerHTML="Menuiserie";				
+document.getElementById("T12").innerHTML=parseInt(prix/6.67/1000)+" 000";
+
+document.getElementById("T13").innerHTML="Imprévus";				
+document.getElementById("T14").innerHTML=parseInt(prix/33.33/1000)+" 000";
+
+document.getElementById("T15").innerHTML="<b>TOTAL</b>";				
+document.getElementById("T16").innerHTML="<b>"+parseInt(prix/1000)+" 000"+"</b>";				
+
+ document.getElementById("bt3").innerHTML="<button onclick='affmetre()' style='color:#0ef; width:230px; height:30px; font-size:20px; position:absolute;'>VOIR LES QUANTITES</button>";
+}
+/*
+Install		5,00	%	20,00
+Gros-oeuvre	51,00	%	1,96
+Electricité	8,00	%	12,50
+Plomberie	6,00	%	16,67
+Revêtements	12,00	%	8,33
+Menuiserie	15,00	%	6,67
+Imprévus	3,00	%	33,33
+ 
+*/
+
+
+     function transferteuro(){
+    var anc = document.getElementById("champeuro").value;	//Champ vide ou pas
+    var nveau = anc.replace(anc, prix);      
+    document.getElementById("champeuro").value = nveau;
+    document.getElementById("champeuro").style="color:black";
+       }
+    
+         function transfertdollar(){
+    var anc = document.getElementById("champdollar").value;	//Champ vide ou pas
+    var nveau = anc.replace(anc, prix);      
+    document.getElementById("champdollar").value = nveau;
+    document.getElementById("champdollar").style="color:black";
+    
+    }
+    
+        function conveuro(){
+    var encfa = document.getElementById("champeuro").value;
+    var conversion = encfa/655.957;
+    var eneuro = encfa.replace(encfa, conversion);
+if(encfa >= 1E4){
+document.getElementById("champeuro").value= parseInt(eneuro);
+document.getElementById("champeuro").style="color:blue";
+}
+else{
+document.getElementById("champeuro").value= (eneuro);
+document.getElementById("champeuro").style="color:blue";
+}
+    						}
+    
+    	function convdollar(){
+    var encfa = document.getElementById("champdollar").value;
+    var conversion = encfa/550;
+    var endollar = encfa.replace(encfa, conversion);
+if(encfa >= 1E4){
+document.getElementById("champdollar").value= parseInt(endollar);
+document.getElementById("champdollar").style="color:green";
+}
+else{
+document.getElementById("champdollar").value= (endollar);
+document.getElementById("champdollar").style="color:green";
+}
+    						}
+  
+  
+  
+/*=======================*/
+
+function metre(){
+document.getElementById("Projet").innerHTML="------ Projet de "+e+" étage(s) sur terrain de "+s+"m². ------";
+document.getElementById("metre").style="position:relative;right:40px";
+
+var horsfondat=26*s/150;
+var cim=parseInt(horsfondat*niv+16);
+var fer=3*cim/10; 
+var sable=parseInt(niv*64); beton=parseInt(niv*20+32);
+var hourdis=parseInt(niv*s*40/4.56);
+var hourdcim=parseInt(hourdis/640); hsacs=hourdcim%20;
+var brq0=parseInt(s*5700/150); briques=brq0*niv;
+var brqcim=parseInt(briques/680); bsacs=brqcim%20;
+
+var brqp0=parseInt(s*1880/150); briquesp=brqp0;
+var brqpcim=parseInt(briquesp/590); bqpsacs=brqpcim%20;
+
+document.getElementById("PS0").innerHTML="<b>C I M E N T<br>"+cim+" Tonnes.</b> <br>Comprend les briques et travaux de carrelage";	
+//Coïncidence pour terrain 150m2 rdc : 42T ciment et 4.2T x3 en fer.
+document.getElementById("PS1").innerHTML="<b>F &nbsp; E &nbsp; R<br>= "+fer.toFixed(2)*10+" X 100 kg.<br>"+fer.toFixed(2)+" Tonnes.</b><br>1 Tonne &#8594; 1000 kg.";				
+document.getElementById("PS2").innerHTML="<b>S A B L E<br>= "+sable+" m3.</b><br> "+sable/16+" Camions de 16m3.<br>(m3 = mètre cube).";				
+document.getElementById("PS3").innerHTML="<b>B E T O N &nbsp; &nbsp; N O I R <br>= "+beton+" m3.</b><br> "+(beton/16).toFixed(2)+" Camions de 16m3.<br>(m3 = mètre cube).";						
+document.getElementById("PS4").innerHTML="<b>B R I Q U E S<br>"+briques+" Briques</b> <br>Soient "+brqcim+" tonnes et "+bsacs+" sacs de ciment à mouler.";		
+
+document.getElementById("PS5").innerHTML="<b>H O U R D I S<br>"+hourdis+" Hourdis.</b> <br>Soient "+hourdcim+" tonnes et "+hsacs+" sacs de ciment à mouler.";
+
+document.getElementById("PS6").innerHTML="<b>BRIQUES PLEINES<br>"+brqp0+" Briques</b> <br>Soient "+brqpcim+" tonnes et "+bqpsacs+" sacs de ciment à mouler.<br> Ne concerne que les fondations.";	
+
+document.getElementById("PS7").innerHTML="";
+document.getElementById("PS8").innerHTML="";
+
+				
+}
+
+function affmetre(){
+
+document.getElementById("PS0").style="left:-50px;transition:1s;"
+document.getElementById("PS1").style="left:-50px;transition:1.5s;"
+document.getElementById("PS2").style="left:-50px;transition:2s;"
+document.getElementById("PS3").style="left:-50px;transition:2.5s;"
+document.getElementById("PS4").style="left:-50px;transition:3s;"
+document.getElementById("PS5").style="left:-50px;transition:3s;"
+document.getElementById("PS6").style="left:-50px;transition:3s;"
+document.getElementById("PS7").style="left:-50px;transition:3s;"
+document.getElementById("PS8").style="left:-50px;transition:3s;"
+}
+/* 
+                       GRAIN DE RIZ !
+
+150m2 rdc CIMENT
+Fondation : 16 T - Elevation : 14 T 
+Dalle : 5 T - Enduit : 3 T - 
+Carrelage 2 T - Autres 2 T 
+----- 
+Environ 26T (Total-fondations16) par niveau
+*/
+</script>
+
+
+
+
+
+
+
+  </body>
+  </html>
